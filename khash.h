@@ -24,6 +24,11 @@
 */
 
 /*
+	Modified by Arcane Ingenuity for use in Orb
+	https://github.com/ArcaneIngenuity/orb
+*/
+
+/*
   An example:
 
 #include "khash.h"
@@ -357,7 +362,10 @@ static const double __ac_HASH_UPPER = 0.77;
 #define KHASH_DECLARE(name, khkey_t, khval_t)		 					\
 	__KHASH_TYPE(name, khkey_t, khval_t) 								\
 	__KHASH_PROTOTYPES(name, khkey_t, khval_t)
-
+	
+#define KHASH_DEFINE(name, khkey_t, khval_t, __hash_func, __hash_equal, kh_is_map)\
+	__KHASH_IMPL(name, kh_inline klib_unused, khkey_t, khval_t, kh_is_map, __hash_func, __hash_equal)
+	
 #define KHASH_INIT2(name, SCOPE, khkey_t, khval_t, kh_is_map, __hash_func, __hash_equal) \
 	__KHASH_TYPE(name, khkey_t, khval_t) 								\
 	__KHASH_IMPL(name, SCOPE, khkey_t, khval_t, kh_is_map, __hash_func, __hash_equal)
